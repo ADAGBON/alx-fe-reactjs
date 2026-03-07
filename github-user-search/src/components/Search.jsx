@@ -87,14 +87,9 @@ const Search = () => {
           <img src={user.avatar_url} alt={user.login} className="w-20 h-20 rounded-full" />
           <div>
             <h3 className="text-xl font-bold">{user.name || user.login}</h3>
-            {user.location && <p className="text-gray-600">Ì≥ç {user.location}</p>}
+            {user.location && <p className="text-gray-600">Location: {user.location}</p>}
             <p className="text-gray-600">Repos: {user.public_repos}</p>
-            
-              href={user.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
+            <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
               View Profile
             </a>
           </div>
@@ -110,12 +105,7 @@ const Search = () => {
                 <img src={u.avatar_url} alt={u.login} className="w-16 h-16 rounded-full" />
                 <div>
                   <h3 className="font-bold">{u.login}</h3>
-                  
-                    href={u.html_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
+                  <a href={u.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                     View Profile
                   </a>
                 </div>
@@ -123,10 +113,7 @@ const Search = () => {
             ))}
           </ul>
           {users.length < totalCount && (
-            <button
-              onClick={handleLoadMore}
-              className="mt-4 bg-gray-200 rounded p-2 w-full hover:bg-gray-300"
-            >
+            <button onClick={handleLoadMore} className="mt-4 bg-gray-200 rounded p-2 w-full hover:bg-gray-300">
               Load More
             </button>
           )}
