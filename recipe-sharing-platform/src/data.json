@@ -3,36 +3,48 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["400g spaghetti", "200g pancetta or bacon", "4 large eggs", "100g Pecorino Romano cheese", "100g Parmesan cheese", "Black pepper to taste", "Salt to taste"],
+    "instructions": ["Cook spaghetti in salted boiling water until al dente.", "Fry pancetta in a pan until crispy, then set aside.", "Whisk eggs with grated Pecorino and Parmesan cheese.", "Drain pasta, reserving some pasta water.", "Mix pasta with pancetta, then remove from heat.", "Add egg and cheese mixture, tossing quickly.", "Add pasta water gradually to achieve a creamy consistency.", "Season with black pepper and serve immediately."]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["500g chicken breast, cubed", "1 cup plain yogurt", "2 tbsp tikka masala spice mix", "1 can crushed tomatoes", "1 cup heavy cream", "2 cloves garlic, minced", "1 onion, diced", "2 tbsp butter", "Salt to taste"],
+    "instructions": ["Marinate chicken in yogurt and tikka masala spice for 1 hour.", "Grill or pan-fry chicken until charred and cooked through.", "Sauté onion and garlic in butter until golden.", "Add crushed tomatoes and simmer for 10 minutes.", "Stir in heavy cream and bring to a gentle simmer.", "Add grilled chicken to the sauce and cook for 5 more minutes.", "Season with salt and serve with naan or rice."]
   },
   {
     "id": 3,
     "title": "Beef Tacos",
     "summary": "Crispy taco shells filled with seasoned ground beef, lettuce, cheese, and salsa.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["500g ground beef", "8 taco shells", "1 packet taco seasoning", "1 cup shredded lettuce", "1 cup shredded cheddar cheese", "1/2 cup salsa", "1/2 cup sour cream", "1 tomato, diced"],
+    "instructions": ["Brown ground beef in a skillet over medium heat.", "Drain excess fat from the beef.", "Add taco seasoning and water as directed on packet.", "Simmer until sauce thickens, about 5 minutes.", "Warm taco shells in oven for 3 minutes.", "Fill shells with beef, lettuce, cheese, tomato, salsa, and sour cream.", "Serve immediately and enjoy!"]
   },
   {
     "id": 4,
     "title": "Margherita Pizza",
     "summary": "A traditional Italian pizza topped with fresh tomatoes, mozzarella, and basil.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["1 pizza dough ball", "1/2 cup tomato sauce", "200g fresh mozzarella", "Fresh basil leaves", "2 tbsp olive oil", "Salt and pepper to taste"],
+    "instructions": ["Preheat oven to 250°C (480°F).", "Roll out pizza dough on a floured surface.", "Spread tomato sauce evenly over the dough.", "Tear mozzarella and distribute over the sauce.", "Drizzle with olive oil and season with salt and pepper.", "Bake for 10-12 minutes until crust is golden.", "Top with fresh basil leaves and serve hot."]
   },
   {
     "id": 5,
     "title": "Caesar Salad",
     "summary": "Crisp romaine lettuce tossed with Caesar dressing, croutons, and parmesan cheese.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["1 large romaine lettuce head", "1/2 cup Caesar dressing", "1 cup croutons", "1/2 cup shaved Parmesan cheese", "1 lemon, juiced", "Black pepper to taste"],
+    "instructions": ["Wash and chop romaine lettuce into bite-sized pieces.", "Add Caesar dressing and toss to coat evenly.", "Add croutons and shaved Parmesan.", "Squeeze lemon juice over the salad.", "Season with black pepper.", "Toss once more and serve immediately."]
   },
   {
     "id": 6,
     "title": "Chocolate Lava Cake",
     "summary": "A decadent chocolate cake with a warm, gooey molten chocolate center.",
-    "image": "https://via.placeholder.com/150"
+    "image": "https://via.placeholder.com/600x400",
+    "ingredients": ["200g dark chocolate", "100g butter", "4 eggs", "4 egg yolks", "100g sugar", "50g all-purpose flour", "Pinch of salt", "Powdered sugar for dusting"],
+    "instructions": ["Preheat oven to 200°C (390°F). Grease 4 ramekins.", "Melt chocolate and butter together in a double boiler.", "Whisk eggs, egg yolks, and sugar until pale and thick.", "Fold chocolate mixture into egg mixture.", "Sift in flour and salt, fold gently until combined.", "Pour batter into ramekins and bake for 12 minutes.", "The edges should be set but center still jiggly.", "Dust with powdered sugar and serve immediately."]
   }
 ]
