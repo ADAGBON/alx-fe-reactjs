@@ -1,49 +1,105 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const validationSchema = Yup.object({
-  username: Yup.string().required('Username is required.'),
-  email: Yup.string().email('Enter a valid email address.').required('Email is required.'),
-  password: Yup.string().min(6, 'Password must be at least 6 characters.').required('Password is required.'),
+  username: Yup.string()
+    .min(3, "Username must be at least 3 characters")
+    .required("Username is required"),
+  email: Yup.string()
+    .email("Enter a valid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
-function FormikForm() {
+const FormikForm = () => {
+  const initialValues = {
+    username: "",
+    email: "",
+    password: "",
+  };
+
+  const handleSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+    try {
+      // Mock API call
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        setStatus({ success: "Registration successful!" });
+        resetForm();
+      } else {
+        setStatus({ error: "Registration failed. Please try again." });
+      }
+    } catch (error) {
+      setStatus({ error: "Network error. Please try again." });
+      console.error("Submission error:", error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
-    <div className="bg-white rounded-2xl shadow-md p-8 w-full max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">Create an Account</h2>
-      <p className="text-gray-500 text-sm mb-6">Using Formik & Yup</p>
-      <Formik
-        initialValues={{ username: '', email: '', password: '' }}
-        validationSchema={validationSchema}
-        onSubmit={(values, { resetForm, setStatus }) => {
-          setStatus({ success: '✅ Registration successful!' });
-          resetForm();
-        }}
-      >
-        {({ status }) => (
-          <Form className="space-y-5">
-            {status?.success && <div className="bg-green-100 text-green-700 font-semibold px-4 py-3 rounded-lg">{status.success}</div>}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Username</label>
-              <Field type="text" name="username" placeholder="Enter your username" className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-              <ErrorMessage name="username" component="p" className="text-red-500 text-sm mt-1" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Email</label>
-              <Field type="email" name="email" placeholder="Enter your email" className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-              <ErrorMessage name="email" component="p" className="text-red-500 text-sm mt-1" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1">Password</label>
-              <Field type="password" name="password" placeholder="Enter your password" className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-400 transition" />
-              <ErrorMessage name="password" component="p" className="text-red-500 text-sm mt-1" />
-            </div>
-            <button type="submit" className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 rounded-lg shadow transition duration-200">Register</button>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ isSubmitting, status }) => (
+        <Form noValidate>
+          <h2>Register (Formik)</h2>
+
+          {status?.success && (
+            <div className="success-message">{status.success}</div>
+          )}
+          {status?.error && (
+            <div className="error-banner">{status.error}</div>
+          )}
+
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <Field
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+            />
+            <ErrorMessage name="username" component="span" className="error" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+            />
+            <ErrorMessage name="email" component="span" className="error" />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <Field
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+            />
+            <ErrorMessage name="password" component="span" className="error" />
+          </div>
+
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Registering..." : "Register"}
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
-}
+};
 
 export default FormikForm;
