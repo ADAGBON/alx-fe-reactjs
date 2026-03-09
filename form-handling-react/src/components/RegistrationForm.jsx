@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const RegistrationForm = () => {
+function RegistrationForm() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -8,30 +8,17 @@ const RegistrationForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error for field as user types
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: "" }));
-    }
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username.trim()) newErrors.username = "Username is required";
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Enter a valid email address";
-    }
-    if (!formData.password.trim()) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
+    if (!formData.username) newErrors.username = "Username is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.password) newErrors.password = "Password is required";
     return newErrors;
   };
 
@@ -42,35 +29,24 @@ const RegistrationForm = () => {
       setErrors(validationErrors);
       return;
     }
-
     try {
-      // Mock API call
       const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       if (response.ok) {
-        setSubmitted(true);
+        alert("Registration successful!");
         setFormData({ username: "", email: "", password: "" });
+        setErrors({});
       }
     } catch (error) {
       console.error("Submission error:", error);
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="success-message">
-        <h3>Registration Successful!</h3>
-        <button onClick={() => setSubmitted(false)}>Register Again</button>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit}>
       <h2>Register (Controlled Components)</h2>
 
       <div className="form-group">
@@ -115,6 +91,6 @@ const RegistrationForm = () => {
       <button type="submit">Register</button>
     </form>
   );
-};
+}
 
 export default RegistrationForm;
