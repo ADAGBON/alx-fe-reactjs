@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import recipeData from '../data.json';
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setRecipes(recipeData);
@@ -26,7 +25,6 @@ function HomePage() {
             <div
               key={recipe.id}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-transform duration-300 cursor-pointer"
-              onClick={() => navigate(`/recipe/${recipe.id}`)}
             >
               <img
                 src={recipe.image}
@@ -36,9 +34,12 @@ function HomePage() {
               <div className="p-5">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{recipe.title}</h3>
                 <p className="text-gray-500 text-sm mb-4">{recipe.summary}</p>
-                <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-200">
+                <Link
+                  to={`/recipe/${recipe.id}`}
+                  className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-4 py-2 rounded-lg transition duration-200 inline-block"
+                >
                   View Recipe →
-                </button>
+                </Link>
               </div>
             </div>
           ))}
